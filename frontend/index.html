@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Generator</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f8ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 350px;
+            border: 2px solid #007bff;
+        }
+
+        h1 {
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .option {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .option input[type="checkbox"] {
+            margin-left: 10px;
+        }
+
+        input[type="number"], input[type="text"] {
+            width: 80px;
+            padding: 5px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .input-text {
+            width: calc(100% - 20px);
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #passwords {
+            margin-top: 20px;
+            white-space: pre-wrap;
+            word-break: break-all;
+            color: #007bff;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .strength-bar-container {
+            margin-top: 10px;
+            width: 100%;
+            height: 20px;
+            background: #ddd;
+            border-radius: 5px;
+        }
+
+        .strength-bar {
+            height: 100%;
+            width: 0;
+            transition: width 0.3s ease-in-out;
+        }
+
+        .strength-bar.medium {
+            background: orange;
+        }
+
+        .strength-bar.strong {
+            background: green;
+        }
+
+        #strengthPercentage {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Password Generator</h1>
+        <label for="length">Length:</label>
+        <input type="number" id="length" name="length" min="1" max="128" value="12">
+        <label for="count">Number of Passwords:</label>
+        <input type="number" id="count" name="count" min="1" value="1">
+        <label for="customString">Custom String (optional):</label>
+        <input type="text" id="customString" name="customString" class="input-text">
+        <div class="option">
+            <label for="uppercase">Uppercase</label>
+            <input type="checkbox" id="uppercase" name="uppercase" checked>
+        </div>
+        <div class="option">
+            <label for="lowercase">Lowercase</label>
+            <input type="checkbox" id="lowercase" name="lowercase" checked>
+        </div>
+        <div class="option">
+            <label for="numbers">Numbers</label>
+            <input type="checkbox" id="numbers" name="numbers" checked>
+        </div>
+        <div class="option">
+            <label for="symbols">Symbols</label>
+            <input type="checkbox" id="symbols" name="symbols" checked>
+        </div>
+        <div class="option">
+            <label for="excludeSimilar">Exclude Similar Characters (e.g., 'l' and '1')</label>
+            <input type="checkbox" id="excludeSimilar" name="excludeSimilar">
+        </div>
+        <div class="option">
+            <label for="excludeAmbiguous">Exclude Ambiguous Characters (e.g., '{}', '[]', '()', '/', '\\', '"', "'")</label>
+            <input type="checkbox" id="excludeAmbiguous" name="excludeAmbiguous">
+        </div>
+        <button onclick="generatePasswords()">Generate Passwords</button>
+        <button onclick="confirmSave()">Save to File</button>
+        <div id="passwords"></div>
+        <div class="strength-bar-container">
+            <div id="strength" class="strength-bar"></div>
+        </div>
+        <div id="strengthPercentage"></div>
+    </div>
+    <script>
+        function generatePassword(length, includeUppercase, includeLowercase, includeNumbers, includeSymbols, excludeSimilar, excludeAmbiguous, customString) {
+            let characters = "";
+            if (includeUppercase) characters += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            if (includeLowercase) characters += "abcdefghijklmnopqrstuvwxyz";
+            if (includeNumbers) characters += "0123456789";
+            if (includeSymbols) characters += "!@#$%^&*()_+[]{}|;:,.<>?";
+
+            if (excludeSimilar) {
+                const similarChars = "il1Lo0O";
+                characters = characters.split("").filter(char => !similarChars.includes(char)).join("");
+            }
+
+            if (excludeAmbiguous) {
+                const ambiguousChars = "{}[]()/\\'\"`~,;:.<>?";
+                characters = characters.split("").filter(char => !ambiguousChars.includes(char)).join("");
+            }
+
+            let password = customString || "";
+            for (let i = password.length; i < length; i++) {
+                password += characters.charAt(Math.floor(Math.random() * characters.length));
+            }
+            return password;
+        }
+
+        function getPasswordStrength(password) {
+            let strength = 0;
+            if (password.length >= 8) strength += 10;
+            if (password.length >= 12) strength += 15;
+            if (password.length >= 16) strength += 20;
+            if (/[A-Z]/.test(password)) strength += 20;
+            if (/[a-z]/.test(password)) strength += 15;
+            if (/[0-9]/.test(password)) strength += 10;
+            if (/[!@#$%^&*()_+[\]{}|;:,.<>?]/.test(password)) strength += 20;
+
+            return Math.min(strength, 100); // Ensure max strength is capped at 100
+        }
+
+        function displayPasswordStrength(password) {
+            const strengthElement = document.getElementById("strength");
+            const strengthPercentageElement = document.getElementById("strengthPercentage");
+            const strength = getPasswordStrength(password);
+            
+            let colorClass = "";
+            if (strength <= 40) {
+                colorClass = "";
+                strengthElement.className = "strength-bar";
+                strengthElement.style.width = strength + "%";
+            } else if (strength <= 70) {
+                colorClass = "medium";
+                strengthElement.className = "strength-bar medium";
+                strengthElement.style.width = strength + "%";
+            } else {
+                colorClass = "strong";
+                strengthElement.className = "strength-bar strong";
+                strengthElement.style.width = strength + "%";
+            }
+
+            strengthPercentageElement.textContent = "Strength: " + strength + "%";
+        }
+       async function generatePasswords() {
+    const length = Number(document.getElementById("length").value);
+    const count = Number(document.getElementById("count").value);
+    const customString = document.getElementById("customString").value;
+
+    const includeUppercase = document.getElementById("uppercase").checked;
+    const includeLowercase = document.getElementById("lowercase").checked;
+    const includeNumbers = document.getElementById("numbers").checked;
+    const includeSymbols = document.getElementById("symbols").checked;
+    const excludeSimilar = document.getElementById("excludeSimilar").checked;
+    const excludeAmbiguous = document.getElementById("excludeAmbiguous").checked;
+
+    const response = await fetch("/generate", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            length,
+            count,
+            includeUppercase,
+            includeLowercase,
+            includeNumbers,
+            includeSymbols,
+            excludeSimilar,
+            excludeAmbiguous,
+            customString
+        })
+    });
+
+    const data = await response.json();
+
+    const passwordsText = data.passwords.join("\n");
+    document.getElementById("passwords").textContent = passwordsText;
+
+    // Display strength of first password
+    displayPasswordStrength(data.passwords[0]);
+}
+
+                function confirmSave() {
+            const confirmSave = confirm("Do you want to save the generated passwords to a file?");
+            if (confirmSave) {
+                savePasswords();
+            }
+        }
+
+        function savePasswords() {
+            const passwords = document.getElementById("passwords").textContent;
+            const blob = new Blob([passwords], { type: "text/plain;charset=utf-8" });
+            const link = document.createElement("a");
+            link.href = URL.createObjectURL(blob);
+            link.download = "passwords.txt";
+            link.click();
+        }
+    </script>
+</body>
+</html>
