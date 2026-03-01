@@ -1,5 +1,6 @@
- 🔐 Key Master – Advanced Password Generator
-📌 Project Overview
+# 🔐**Key Master – Advanced Password Generator**
+
+📌 **Project Overview**
 
 Key Master is a full-stack advanced password generator built using:
 
@@ -15,7 +16,7 @@ Key Master is a full-stack advanced password generator built using:
 
 It allows users to generate highly secure passwords with advanced customization options.
 
-🎯 Features
+🎯 **Features**
 
 ✔ Custom password length
 ✔ Generate multiple passwords at once
@@ -27,7 +28,7 @@ It allows users to generate highly secure passwords with advanced customization 
 ✔ Password strength indicator
 ✔ Saves generated passwords to file (optional feature ready)
 
-🏗 Project Architecture
+🏗 **Project Architecture**
 Frontend  →  Backend (Express API)  →  Password Generator Logic
 
 Frontend collects user input
@@ -38,7 +39,7 @@ Server generates secure passwords
 
 Response returned as JSON
 
-⚙ Installation & Setup
+⚙ **Installation & Setup**
 🔹 1. Clone Repository
 git clone <your-github-link>
 cd Advanced-Password-Generator
@@ -60,7 +61,7 @@ frontend/index.html
 OR
 👉 Use Live Server in VS Code
 
-🔐 API Endpoint
+🔐 **API Endpoint**
 Generate Password
 POST /generate
 
@@ -77,7 +78,7 @@ Example Request Body:
   "excludeAmbiguous": false,
   "customString": ""
 }
-🛠 Technologies Used
+🛠 **Technologies Used**
 
 Node.js
 
@@ -89,7 +90,7 @@ HTML
 
 CSS
 
-🚀 Future Improvements
+🚀 **Future Improvements**
 
 ✅ Save passwords to text/CSV file
 ✅ Export as PDF
