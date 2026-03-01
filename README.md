@@ -109,6 +109,12 @@ HTML
 
 CSS
 
+📸 **Screenshots**
+
+![Screenshot 1](screenshots/1.jpg)
+![Screenshot 2](screenshots/2.jpg)
+![Screenshot 3](screenshots/3.jpg)
+
 🚀 **Future Improvements**
 
 ✅ Save passwords to text/CSV file
