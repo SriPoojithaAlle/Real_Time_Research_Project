@@ -40,10 +40,11 @@ Server generates secure passwords
 Response returned as JSON
 
 ⚙ **Installation & Setup**
-🔹 1. Clone Repository
+-🔹 1. Clone Repository
 git clone <your-github-link>
 cd Advanced-Password-Generator
-🔹 2. Backend Setup
+
+-🔹 2. Backend Setup
 cd backend
 npm install
 node server.js
@@ -51,7 +52,8 @@ node server.js
 Server runs at:
 
 http://localhost:3000
-🔹 3. Frontend
+
+-🔹 3. Frontend
 
 Open:
 
@@ -92,9 +94,9 @@ CSS
 
 🚀 **Future Improvements**
 
-✅ Save passwords to text/CSV file
-✅ Export as PDF
-✅ Dark / Light mode
-✅ Authentication system
-✅ Database storage
-✅ Deploy to cloud
+-✅ Save passwords to text/CSV file
+-✅ Export as PDF
+-✅ Dark / Light mode
+-✅ Authentication system
+-✅ Database storage
+-✅ Deploy to cloud
