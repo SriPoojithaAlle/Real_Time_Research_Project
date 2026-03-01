@@ -19,13 +19,21 @@ It allows users to generate highly secure passwords with advanced customization 
 🎯 **Features**
 
 ✔ Custom password length
+
 ✔ Generate multiple passwords at once
+
 ✔ Uppercase / Lowercase selection
+
 ✔ Numbers & Symbols support
+
 ✔ Exclude similar characters
+
 ✔ Exclude ambiguous characters
+
 ✔ Custom string support
+
 ✔ Password strength indicator
+
 ✔ Saves generated passwords to file (optional feature ready)
 
 🏗 **Project Architecture**
@@ -40,11 +48,12 @@ Server generates secure passwords
 Response returned as JSON
 
 ⚙ **Installation & Setup**
--🔹 1. Clone Repository
+
+🔹 1. Clone Repository
 git clone <your-github-link>
 cd Advanced-Password-Generator
 
--🔹 2. Backend Setup
+🔹 2. Backend Setup
 cd backend
 npm install
 node server.js
@@ -53,7 +62,7 @@ Server runs at:
 
 http://localhost:3000
 
--🔹 3. Frontend
+🔹 3. Frontend
 
 Open:
 
@@ -71,13 +80,21 @@ Example Request Body:
 
 {
   "length": 12,
+  
   "count": 3,
+  
   "includeUppercase": true,
+  
   "includeLowercase": true,
+  
   "includeNumbers": true,
+  
   "includeSymbols": true,
+  
   "excludeSimilar": true,
+  
   "excludeAmbiguous": false,
+  
   "customString": ""
 }
 🛠 **Technologies Used**
@@ -94,9 +111,14 @@ CSS
 
 🚀 **Future Improvements**
 
--✅ Save passwords to text/CSV file
--✅ Export as PDF
--✅ Dark / Light mode
--✅ Authentication system
--✅ Database storage
--✅ Deploy to cloud
+✅ Save passwords to text/CSV file
+
+✅ Export as PDF
+
+✅ Dark / Light mode
+
+✅ Authentication system
+
+✅ Database storage
+
+✅ Deploy to cloud
