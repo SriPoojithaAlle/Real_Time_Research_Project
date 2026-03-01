@@ -113,7 +113,7 @@ CSS
 
 Screenshot-1
 
-<h2 align="center">📸 Screenshots</h2>
+<h2 align="center"></h2>
 
 <p align="center">
   <img src="screenshots/1.jpg" width="500"/>
