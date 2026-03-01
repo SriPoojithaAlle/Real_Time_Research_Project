@@ -111,9 +111,25 @@ CSS
 
 📸 **Screenshots**
 
-![Screenshot 1](screenshots/1.jpg)
-![Screenshot 2](screenshots/2.jpg)
-![Screenshot 3](screenshots/3.jpg)
+Screenshot-1
+
+<h2 align="center">📸 Screenshots</h2>
+
+<p align="center">
+  <img src="screenshots/1.jpg" width="500"/>
+</p>
+
+Screenshot-2
+
+<p align="center">
+  <img src="screenshots/2.jpg" width="500"/>
+</p>
+
+Screenshot-3
+
+<p align="center">
+  <img src="screenshots/3.jpg" width="500"/>
+</p>
 
 🚀 **Future Improvements**
 
