@@ -37,6 +37,7 @@ It allows users to generate highly secure passwords with advanced customization 
 ✔ Saves generated passwords to file (optional feature ready)
 
 🏗 **Project Architecture**
+
 Frontend  →  Backend (Express API)  →  Password Generator Logic
 
 Frontend collects user input
@@ -59,7 +60,6 @@ npm install
 node server.js
 
 Server runs at:
-
 http://localhost:3000
 
 🔹 3. Frontend
@@ -73,6 +73,7 @@ OR
 👉 Use Live Server in VS Code
 
 🔐 **API Endpoint**
+
 Generate Password
 POST /generate
 
@@ -97,6 +98,7 @@ Example Request Body:
   
   "customString": ""
 }
+
 🛠 **Technologies Used**
 
 Node.js
@@ -113,21 +115,19 @@ CSS
 
 Screenshot-1
 
-<h2 align="left"></h2>
-
-<p align="center">
+<p align="left">
   <img src="screenshots/1.jpg" width="500"/>
 </p>
 
 Screenshot-2
 
-<p align="center">
+<p align="left">
   <img src="screenshots/2.jpg" width="500"/>
 </p>
 
 Screenshot-3
 
-<p align="center">
+<p align="left">
   <img src="screenshots/3.jpg" width="500"/>
 </p>
 
